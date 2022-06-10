@@ -2,10 +2,11 @@ package com.start.retrofitlibrarytest_20220610
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.databinding.DataBindingUtil
 import com.start.retrofitlibrarytest_20220610.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     lateinit var binding: ActivityMainBinding
 
