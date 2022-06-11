@@ -17,6 +17,7 @@ class ServerAPI {
         fun getRetrofit() : Retrofit {
 
             if(retrofit == null) {
+
 //                통신 담당 객체를 만들지 않았다면 => 없을때만 새로 한번만들자.
 
                 retrofit = Retrofit.Builder()
