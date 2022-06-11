@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.start.retrofitlibrarytest_20220610.databinding.ActivityMainBinding
 import com.start.retrofitlibrarytest_20220610.datas.BasicResponse
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -35,9 +36,20 @@ class MainActivity : BaseActivity() {
                     response: Response<BasicResponse>
                 ) {
 
-                    val basicResponse = response.body()!!
+                    if(response.isSuccessful){
 
-                    Toast.makeText(mContext, basicResponse.message, Toast.LENGTH_SHORT).show()
+                        val basicResponse = response.body()!!
+
+                        Toast.makeText(mContext, basicResponse.message, Toast.LENGTH_SHORT).show()
+                    }
+                    else{
+
+                        val errorJson = JSONObject( response.errorBody()!!.string())
+                        Log.d("에러경우", errorJson.toString())
+
+                        val message = errorJson.getString("message")
+                        Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show()
+                    }
                 }
 
                 override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
