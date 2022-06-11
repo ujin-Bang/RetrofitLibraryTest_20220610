@@ -18,4 +18,13 @@ interface ServerAPIService {
         @Field("password") pw: String,
     ) : Call<BasicResponse>
 
+
+//    회원가입 기능
+    @FormUrlEncoded
+    @PUT("/user")
+    fun putRequestSignUp(
+        @Field("email") email: String,
+        @Field("password") pw: String,
+        @Field("nick_name") nick: String,
+    ) : Call<BasicResponse>
 }

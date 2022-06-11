@@ -23,6 +23,8 @@ class SignUpActivity : BaseActivity() {
             val inputPassword = binding.edtPassword.text.toString()
             val inputNickname = binding.edtNickname.text.toString()
 
+            apiService.
+
         }
 
     }
