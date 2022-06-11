@@ -7,45 +7,49 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="20dp"
-        tools:context=".MainActivity">
+        tools:context=".SignUpActivity">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="아이디"/>
+            android:text="이메일 주소"/>
 
         <EditText
             android:id="@+id/edtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="이메일 양식"
+            android:hint="이메일 주소"
             android:inputType="textEmailAddress"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="비밀번호"
-            android:layout_marginTop="10dp"/>
+            android:text="비밀번호"/>
 
         <EditText
             android:id="@+id/edtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="비밀번호 입력"
+            android:hint="비밀번호"
             android:inputType="textPassword"/>
 
-        <Button
-            android:id="@+id/btnLogin"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="닉네임"/>
+
+        <EditText
+            android:id="@+id/edtNickname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="로그인"/>
+            android:hint="한글 입력 가능"
+            android:singleLine="true"/>
 
         <Button
             android:id="@+id/btnSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="회원가입"/>
-
 
     </LinearLayout>
 </layout>
