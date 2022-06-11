@@ -2,15 +2,11 @@ package com.start.retrofitlibrarytest_20220610.api
 
 import com.start.retrofitlibrarytest_20220610.datas.BasicResponse
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
-import retrofit2.http.PUT
+import retrofit2.http.*
 
 interface ServerAPIService {
 
 //    로그인 기능 명세
-
     @FormUrlEncoded
     @POST("/user")
     fun postRequestLogin(
@@ -27,4 +23,13 @@ interface ServerAPIService {
         @Field("password") pw: String,
         @Field("nick_name") nick: String,
     ) : Call<BasicResponse>
+
+
+//    이메일/닉네임 중복 확인 기능.
+    @GET("/user/check")
+    fun getRequestDuplicatedCheck(
+        @Query("type") type: String,
+        @Query("value") value: String,
+    ) : Call<BasicResponse>
+
 }
