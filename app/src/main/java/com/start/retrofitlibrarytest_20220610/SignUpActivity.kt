@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import com.start.retrofitlibrarytest_20220610.databinding.ActivitySignUpBinding
 import com.start.retrofitlibrarytest_20220610.datas.BasicResponse
@@ -24,6 +25,13 @@ class SignUpActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+
+        binding.edtEmail.addTextChangedListener {
+//            Log.d("입력된 내용", it.toString())
+
+//            입력이 바뀌면 재검사 요청.
+            binding.txtEmailCheckResult.text = "이메일 중복검사를 해주세요"
+        }
 
         binding.btnEmailDupleCheck.setOnClickListener {
 
