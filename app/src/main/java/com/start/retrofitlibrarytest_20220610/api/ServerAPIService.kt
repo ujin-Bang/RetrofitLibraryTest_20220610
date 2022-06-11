@@ -1,5 +1,7 @@
 package com.start.retrofitlibrarytest_20220610.api
 
+import com.start.retrofitlibrarytest_20220610.datas.BasicResponse
+import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
@@ -12,7 +14,7 @@ interface ServerAPIService {
     @POST("/user")
     fun postRequestLogin(
         @Field("email") email: String,
-        @Field("password") pw: String
-    )
+        @Field("password") pw: String,
+    ) : Call<BasicResponse>
 
 }
