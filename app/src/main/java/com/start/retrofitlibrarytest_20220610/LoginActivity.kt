@@ -11,7 +11,7 @@ import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
+//로그인 화면 - 방우진이 작업합니다.
 class LoginActivity : BaseActivity() {
 
     lateinit var binding: ActivityLoginBinding
