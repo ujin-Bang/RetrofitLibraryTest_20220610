@@ -45,6 +45,36 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="회원가입"/>
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="소셜로그인으로 편하게 로그인하세요."/>
+        
+
+        <LinearLayout
+            android:id="@+id/btnFacebookLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/facebook_logo"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="페북로그인"/>
+            
+            
+            
+            
+        </LinearLayout>
 
 
     </LinearLayout>
