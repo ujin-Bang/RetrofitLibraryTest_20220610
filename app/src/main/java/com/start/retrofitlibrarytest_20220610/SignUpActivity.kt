@@ -42,7 +42,7 @@ class SignUpActivity : BaseActivity() {
                 binding.txtPasswordCheckResult1.text = "8글자 이상 입력해주세요!"
                 isPasswordLengthOk = false
             }
-           isPasswordSame = compareTwoPasswords()
+           isPasswordSame = compareTwoPasswords() 
         }
                 
 //        2.비밀번호 확인 타이핑 이벤트 => 첫 비밀번호 입력과 같은지?

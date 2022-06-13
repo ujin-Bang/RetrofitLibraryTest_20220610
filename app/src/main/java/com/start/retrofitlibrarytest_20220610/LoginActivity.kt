@@ -1,7 +1,10 @@
 package com.start.retrofitlibrarytest_20220610
 
 import android.content.Intent
+import android.content.pm.PackageInfo
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Base64
 import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
@@ -11,7 +14,9 @@ import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-//로그인 화면 - 방우진이 작업합니다.
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
+
 class LoginActivity : BaseActivity() {
 
     lateinit var binding: ActivityLoginBinding
@@ -24,6 +29,7 @@ class LoginActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+
 
         binding.btnSignUp.setOnClickListener {
 
@@ -76,5 +82,34 @@ class LoginActivity : BaseActivity() {
 
     override fun setValues() {
 
+        keyHash()
+
     }
-}
+
+    fun keyHash(){
+
+
+
+            var packageInfo: PackageInfo? = null
+            try{
+                packageInfo = packageManager.getPackageInfo(packageName, PackageManager.GET_SIGNATURES)
+            } catch (e: PackageManager.NameNotFoundException) {
+                e.printStackTrace()
+            }
+            if (packageInfo == null) {
+                Log.d("hashKey", "null")
+            }
+            packageInfo?.signatures?.forEach {
+                try {
+                    val md = MessageDigest.getInstance("SHA")
+                    md.update(it.toByteArray())
+                    Log.d("hashKey", Base64.encodeToString(md.digest(), Base64.DEFAULT))
+                } catch (e: NoSuchAlgorithmException) {
+                    e.printStackTrace()
+                    Log.e("KeyHash", "Unable to get MessageDigest. signature=$it", e)
+                }
+            }
+        }}
+
+
+
