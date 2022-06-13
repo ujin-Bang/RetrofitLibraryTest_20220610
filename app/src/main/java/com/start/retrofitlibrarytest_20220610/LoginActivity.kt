@@ -42,8 +42,10 @@ class LoginActivity : BaseActivity() {
                         Log.e("카톡로그인","로그인 실패")
                     }
                     else if( token != null){
-                        Log.e("카톡로그인", "fhrmdls tjdrhd")
+                        Log.e("카톡로그인", "로그인 성공")
                         Log.e("카톡로그인", token.accessToken)
+
+                        getMyInfoFromKakao()
                     }
 
                 }
@@ -59,6 +61,8 @@ class LoginActivity : BaseActivity() {
                     else if( token != null){
                         Log.e("카톡로그인", "로그인 성공")
                         Log.e("카톡로그인", token.accessToken)
+
+                        getMyInfoFromKakao()
                     }
 
                 }
@@ -144,7 +148,24 @@ class LoginActivity : BaseActivity() {
                     Log.e("KeyHash", "Unable to get MessageDigest. signature=$it", e)
                 }
             }
-        }}
+        }
+
+    fun getMyInfoFromKakao(){
+
+        UserApiClient.instance.me { user, error ->
+            if (error != null) {
+                Log.e("카톡로그인", "사용자 정보 요청 실패", error)
+            }
+            else if (user != null) {
+                Log.i("카톡로그인", "사용자 정보 요청 성공" +
+                        "\n회원번호: ${user.id}" +
+                        "\n이메일: ${user.kakaoAccount?.email}" +
+                        "\n닉네임: ${user.kakaoAccount?.profile?.nickname}")
+            }
+        }
+    }
+
+}
 
 
 
