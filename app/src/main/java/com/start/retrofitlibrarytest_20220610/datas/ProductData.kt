@@ -11,8 +11,13 @@ class ProductData(
     var storeId: Int,
 
     var store: StoreData,
+
+// 모든상품조회시 사용
     @SerializedName("small_category")
     var smallCategory: SmallCategoryData,
+
+//  모든카테고리 조회시 사용
+    var categories: List<SmallCategoryData>,
 
 ) {
 }
