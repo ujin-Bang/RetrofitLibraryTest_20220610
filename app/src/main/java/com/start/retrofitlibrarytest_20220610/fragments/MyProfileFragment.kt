@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import com.start.retrofitlibrarytest_20220610.R
 import com.start.retrofitlibrarytest_20220610.databinding.FragmentMyProfileBinding
 
-class MyProfileFragment: Fragment() {
+class MyProfileFragment: BaseFragment() {
 
     lateinit var binding: FragmentMyProfileBinding
     override fun onCreateView(
@@ -23,5 +23,15 @@ class MyProfileFragment: Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        setupEvents()
+        setValues()
+    }
+
+    override fun setupEvents() {
+
+    }
+
+    override fun setValues() {
+
     }
 }
