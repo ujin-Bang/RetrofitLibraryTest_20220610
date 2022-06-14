@@ -39,7 +39,8 @@ class MyProfileFragment: BaseFragment() {
 
     override fun setValues() {
 
-    getMyInfoFromServer()}
+    getMyInfoFromServer()
+    }
 
 
 
