@@ -48,6 +48,9 @@ class ProductListFragment: BaseFragment() {
 
                 if(response.isSuccessful){
                     val br = response.body()!!
+
+                    mProductList.clear()
+                    mProductList.addAll(br.data.products)
                 }
 
             }
