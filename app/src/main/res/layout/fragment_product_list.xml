@@ -6,10 +6,9 @@
         android:orientation="vertical"
         android:gravity="center">
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="나의 쇼핑목록 프레그먼트입니다."/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/poductListRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
     </LinearLayout>
 </layout>
