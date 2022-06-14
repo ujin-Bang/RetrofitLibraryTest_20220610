@@ -50,6 +50,11 @@ class ReviewListFragment : BaseFragment() {
             override fun onResponse(call: Call<BasicResponse>, response: Response<BasicResponse>) {
 
                 if(response.isSuccessful){
+
+                    val br = response.body()!!
+
+                    mSmallCategoryList.clear()
+                    mSmallCategoryList.addAll(br.data.categories)
                 }
             }
 

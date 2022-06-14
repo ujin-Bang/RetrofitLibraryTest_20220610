@@ -16,8 +16,6 @@ class ProductData(
     @SerializedName("small_category")
     var smallCategory: SmallCategoryData,
 
-//  모든카테고리 조회시 사용
-    var categories: List<SmallCategoryData>,
 
 ) {
 }
