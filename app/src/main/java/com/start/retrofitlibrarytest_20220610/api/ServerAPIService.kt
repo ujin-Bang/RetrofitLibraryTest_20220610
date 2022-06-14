@@ -48,4 +48,11 @@ interface ServerAPIService {
     fun getRequestMyInfo(
         @Header("X-Http-Token") token: String,
     ): Call<BasicResponse>
+
+
+//    상품목록 보기 - GET ,아무 파라미터도 없음 (서버의 임시API)
+    @GET("product")
+    fun getRequestProductInfo()
+    : Call<BasicResponse>
 }
+
