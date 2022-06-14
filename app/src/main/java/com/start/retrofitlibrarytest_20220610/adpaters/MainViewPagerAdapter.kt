@@ -17,4 +17,12 @@ class MainViewPagerAdapter(fm : FragmentManager): FragmentPagerAdapter(fm){
             else -> MyProfileFragment()
         }
     }
+
+    override fun getPageTitle(position: Int): CharSequence? {
+        return when(position){
+            0 -> "리뷰 목록"
+            1 -> "상품 목록"
+            else -> "프로필 보기"
+        }
+    }
 }
