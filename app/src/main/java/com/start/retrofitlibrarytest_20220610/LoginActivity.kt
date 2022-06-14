@@ -100,6 +100,11 @@ class LoginActivity : BaseActivity() {
                             Toast.makeText(mContext, "${userNickname}님 환영합니다!!", Toast.LENGTH_SHORT)
                                 .show()
 
+                            val myItent = Intent(mContext, MainActivity::class.java)
+                            startActivity(myItent)
+
+                            finish()
+
                         } else {
 
                             val errorJson = JSONObject(response.errorBody()!!.string())
@@ -126,8 +131,6 @@ class LoginActivity : BaseActivity() {
     }
 
     fun keyHash(){
-
-
 
             var packageInfo: PackageInfo? = null
             try{
@@ -178,6 +181,11 @@ class LoginActivity : BaseActivity() {
                                 "${br.data.user.nickname}님 환영합니다.",
                                 Toast.LENGTH_SHORT
                             ).show()
+
+                            val myIntent = Intent(mContext, MainActivity::class.java)
+                            startActivity(myIntent)
+
+                            finish()
                         }
                     }
 
