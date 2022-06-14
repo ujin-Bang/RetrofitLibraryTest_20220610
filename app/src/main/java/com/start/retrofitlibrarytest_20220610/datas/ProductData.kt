@@ -11,6 +11,8 @@ class ProductData(
     var storeId: Int,
 
     var store: StoreData,
+    @SerializedName("small_category")
+    var smallCategory: SmallCategoryData,
 
 ) {
 }

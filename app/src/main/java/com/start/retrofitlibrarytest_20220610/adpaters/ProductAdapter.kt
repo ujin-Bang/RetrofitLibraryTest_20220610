@@ -35,6 +35,7 @@ class ProductAdapter(
         Glide.with(mContext).load(data.image_url).into(imgStoreLogo)
         txtProductName.text = data.name
         txtStoreName.text = data.store.name
+        txtCategoryName.text = "(${data.smallCategory.name})"
 
 
         return row
