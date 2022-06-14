@@ -16,7 +16,7 @@ class ProductAdapter(
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var tempRow = convertView
         if(tempRow == null){
-            tempRow = LayoutInflater.from(mContext).inflate(R.layout.fragment_product_list, null)
+            tempRow = LayoutInflater.from(mContext).inflate(R.layout.product_list_item, null)
         }
 
         val row = tempRow!!
