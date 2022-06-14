@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.start.retrofitlibrarytest_20220610.R
 import com.start.retrofitlibrarytest_20220610.datas.SmallCategoryData
@@ -17,6 +18,11 @@ class CategoryRecyclerAdapter(
     inner class CategoryViewHoler(view: View): RecyclerView.ViewHolder(view){
 
 //        이 내부의 용도 : xml -> UI찾아내서 -> 데이터 반영기능.
+        val txtCategoryName = view.findViewById<TextView>(R.id.txtCategoryName)
+
+        fun bind(data: SmallCategoryData){
+            txtCategoryName.text = data.name
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHoler {
@@ -27,7 +33,7 @@ class CategoryRecyclerAdapter(
 
     override fun onBindViewHolder(holder: CategoryViewHoler, position: Int) {
 
-
+        holder.bind(mList[position])
     }
 
     override fun getItemCount() = mList.size
