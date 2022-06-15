@@ -2,16 +2,15 @@ package com.start.retrofitlibrarytest_20220610.adpaters
 
 import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.start.retrofitlibrarytest_20220610.EditReviewActivity
 import com.start.retrofitlibrarytest_20220610.R
 import com.start.retrofitlibrarytest_20220610.datas.ProductData
 import kotlinx.coroutines.selects.select
@@ -31,6 +30,7 @@ class ProductRecyclerAdapter(
         val txtProductName = view.findViewById<TextView>(R.id.txtProductName)
         val txtProductPrice = view.findViewById<TextView>(R.id.txtProductPrice)
         val rootLayout = view.findViewById<LinearLayout>(R.id.rootLayout)
+        val btnWriteReview = view.findViewById<Button>(R.id.btnWriteReview)
 
         fun bind(data: ProductData){
             Glide.with(mContext).load(data.image_url).into(imgProductImg)
@@ -59,6 +59,13 @@ class ProductRecyclerAdapter(
                     alert.show()
                 return@setOnLongClickListener true
 
+            }
+
+            btnWriteReview.setOnClickListener {
+//                리뷰 작성 화면으로 이동
+
+                val myInent = Intent(mContext, EditReviewActivity::class.java)
+                mContext.startActivity(myInent)
             }
         }
 
