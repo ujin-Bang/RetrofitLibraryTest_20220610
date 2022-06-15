@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.start.retrofitlibrarytest_20220610.R
 import com.start.retrofitlibrarytest_20220610.adpaters.ProductRecyclerAdapter
 import com.start.retrofitlibrarytest_20220610.databinding.FragmentProductListBinding
@@ -49,7 +51,9 @@ class ProductListFragment: BaseFragment() {
 
         mProductAdapter = ProductRecyclerAdapter(mContext,mProductList)
         binding.productListRecylerView.adapter = mProductAdapter
-        binding.productListRecylerView.layoutManager = LinearLayoutManager(mContext)
+//        binding.productListRecylerView.layoutManager = LinearLayoutManager(mContext)
+//        binding.productListRecylerView.layoutManager = GridLayoutManager(mContext,2)
+        binding.productListRecylerView.layoutManager = StaggeredGridLayoutManager(2,LinearLayoutManager.VERTICAL)
     }
 
     fun getProductListFromServer(){
