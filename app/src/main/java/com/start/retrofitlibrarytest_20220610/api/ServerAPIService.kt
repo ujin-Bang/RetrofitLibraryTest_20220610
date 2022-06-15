@@ -45,9 +45,7 @@ interface ServerAPIService {
 
 //    내 정보조회 - GET
     @GET("/user")
-    fun getRequestMyInfo(
-        @Header("X-Http-Token") token: String,
-    ): Call<BasicResponse>
+    fun getRequestMyInfo(): Call<BasicResponse>
 
 
 //    상품목록 보기 - GET ,아무 파라미터도 없음 (서버의 임시API)
