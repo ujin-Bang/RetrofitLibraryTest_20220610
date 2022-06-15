@@ -57,5 +57,14 @@ interface ServerAPIService {
 //    소분류 전체목록 받아오기 -GET / 아무 파라미터 없음(서버의 임시API)
     @GET("/category/small")
     fun getRequestSmallCategory() : Call<BasicResponse>
+
+
+//    닉네임 변경
+    @FormUrlEncoded
+    @PATCH("/user")
+    fun patchRequestEditUserInfo(
+        @Field("field") field: String,
+        @Field("value") value: String,
+    ): Call<BasicResponse>
 }
 
