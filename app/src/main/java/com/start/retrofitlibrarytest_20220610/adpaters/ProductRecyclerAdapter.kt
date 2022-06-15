@@ -4,9 +4,14 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.start.retrofitlibrarytest_20220610.R
 import com.start.retrofitlibrarytest_20220610.datas.ProductData
+import java.text.NumberFormat
+import java.util.*
 
 class ProductRecyclerAdapter(
     val mContext: Context,
@@ -14,6 +19,22 @@ class ProductRecyclerAdapter(
 ) : RecyclerView.Adapter<ProductRecyclerAdapter.ProductViewHolder>() {
 
     inner class ProductViewHolder(view: View): RecyclerView.ViewHolder(view){
+
+        val imgProductImg = view.findViewById<ImageView>(R.id.imgProductImg)
+        val imgStoreLogo = view.findViewById<ImageView>(R.id.imgStoreLogo)
+        val txtStoreName = view.findViewById<TextView>(R.id.txtStoreName)
+        val txtProductName = view.findViewById<TextView>(R.id.txtProductName)
+        val txtProductPrice = view.findViewById<TextView>(R.id.txtProductPrice)
+
+        fun bind(data: ProductData){
+            Glide.with(mContext).load(data.image_url).into(imgProductImg)
+            Glide.with(mContext).load(data.store.logoURL).into(imgStoreLogo)
+            txtStoreName.text = data.store.name
+            txtProductName.text = data.name
+
+            val priceFormat = NumberFormat.getInstance(Locale.KOREA).format(data.price)
+            txtProductPrice.text = "${priceFormat}원"
+        }
 
     }
 
@@ -25,6 +46,8 @@ class ProductRecyclerAdapter(
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
+
+        holder.bind(mList[position])
 
     }
 
