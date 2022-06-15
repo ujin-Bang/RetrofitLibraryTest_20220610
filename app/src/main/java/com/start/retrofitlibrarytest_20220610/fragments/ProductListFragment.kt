@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.start.retrofitlibrarytest_20220610.R
-import com.start.retrofitlibrarytest_20220610.adpaters.ProductAdapter
+import com.start.retrofitlibrarytest_20220610.adpaters.ProductRecyclerAdapter
 import com.start.retrofitlibrarytest_20220610.databinding.FragmentProductListBinding
 import com.start.retrofitlibrarytest_20220610.datas.BasicResponse
 import com.start.retrofitlibrarytest_20220610.datas.ProductData
@@ -20,6 +20,7 @@ class ProductListFragment: BaseFragment() {
     lateinit var binding : FragmentProductListBinding
 
     val mProductList = ArrayList<ProductData>()
+    lateinit var mProductAdapter: ProductRecyclerAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,6 +46,10 @@ class ProductListFragment: BaseFragment() {
     override fun setValues() {
 
         getProductListFromServer()
+
+        mProductAdapter = ProductRecyclerAdapter(mContext,mProductList)
+        binding.productListRecylerView.adapter = mProductAdapter
+        binding.productListRecylerView.layoutManager = LinearLayoutManager(mContext)
     }
 
     fun getProductListFromServer(){
@@ -56,6 +61,8 @@ class ProductListFragment: BaseFragment() {
 
                     mProductList.clear()
                     mProductList.addAll(response.body()!!.data.products)
+
+                    mProductAdapter.notifyDataSetChanged()
                 }
             }
 
