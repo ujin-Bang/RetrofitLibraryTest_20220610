@@ -32,8 +32,11 @@ class ProductRecyclerAdapter(
             txtStoreName.text = data.store.name
             txtProductName.text = data.name
 
-            val priceFormat = NumberFormat.getInstance(Locale.KOREA).format(data.price)
-            txtProductPrice.text = "${priceFormat}원"
+//            39800 -> 39,800 형태로 가공해주자.  상품데이터에 가격을 가공해주는 함수를 추가해보자.
+            txtProductPrice.text = data.getFormattedPrice()
+
+//            val priceFormat = NumberFormat.getInstance(Locale.KOREA).format(data.price)
+//            txtProductPrice.text = "${priceFormat}원"
         }
 
     }
