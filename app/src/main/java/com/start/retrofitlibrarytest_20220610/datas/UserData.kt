@@ -1,6 +1,7 @@
 package com.start.retrofitlibrarytest_20220610.datas
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 class UserData(
     var id : Int,
@@ -14,5 +15,5 @@ class UserData(
     @SerializedName("profile_img")
     var profileImageURL: String,
 
-) {
+):Serializable {
 }
