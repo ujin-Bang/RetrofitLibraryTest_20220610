@@ -47,7 +47,7 @@ class MyProfileFragment: BaseFragment() {
 
         when(GlobalData.loginUser!!.provider){
             "facebook" -> {
-                binding.imgProfile.setImageResource(R.drawable.facebook_logo)
+                binding.imgProvider.setImageResource(R.drawable.facebook_logo)
             }
             "kakao" -> {
                 binding.imgProvider.setImageResource(R.drawable.kakao_logo)
