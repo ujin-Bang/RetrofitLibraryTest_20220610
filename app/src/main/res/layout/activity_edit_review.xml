@@ -11,6 +11,7 @@
 
 
         <EditText
+            android:id="@+id/edtReviewTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="리뷰 제목을 입력해주세요"/>
@@ -48,6 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:orientation="vertical"
             android:padding="15dp">
 
             <TextView
@@ -56,7 +58,35 @@
                 android:layout_height="wrap_content"
                 android:text="상품명 자리"/>
 
+            <RatingBar
+                android:id="@+id/reviewRatingbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:rating="3"
+                android:stepSize="0.5"/>
+
         </LinearLayout>
+
+        <EditText
+            android:id="@+id/edtContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minLines="5"
+            android:hint="리뷰 내용을 작성해주세요."
+            android:gravity="top"/>
+
+        <EditText
+            android:id="@+id/edtTeg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="#태그리스트자리"
+            android:singleLine="true"/>
+
+        <Button
+            android:id="@+id/btnWrite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="리뷰 작성"/>
 
     </LinearLayout>
 </layout>
