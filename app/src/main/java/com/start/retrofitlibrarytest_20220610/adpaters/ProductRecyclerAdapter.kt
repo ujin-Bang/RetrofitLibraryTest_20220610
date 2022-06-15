@@ -1,6 +1,7 @@
 package com.start.retrofitlibrarytest_20220610.adpaters
 
 import android.content.Context
+import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,10 +9,12 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.start.retrofitlibrarytest_20220610.R
 import com.start.retrofitlibrarytest_20220610.datas.ProductData
+import kotlinx.coroutines.selects.select
 import java.text.NumberFormat
 import java.util.*
 
@@ -43,6 +46,19 @@ class ProductRecyclerAdapter(
 
             rootLayout.setOnClickListener {
                 Toast.makeText(mContext, "${data.name} 상품이 선택되었습니다!!", Toast.LENGTH_SHORT).show()
+            }
+
+
+            rootLayout.setOnLongClickListener {
+
+                val alert = AlertDialog.Builder(mContext)
+                    alert.setTitle("삭제 삭제")
+                    alert.setMessage("정말 삭제하시겠습니까?")
+                    alert.setPositiveButton("예", null)
+                    alert.setNegativeButton("아니요", null)
+                    alert.show()
+                return@setOnLongClickListener true
+
             }
         }
 
