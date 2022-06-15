@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.start.retrofitlibrarytest_20220610.R
@@ -25,6 +27,7 @@ class ProductRecyclerAdapter(
         val txtStoreName = view.findViewById<TextView>(R.id.txtStoreName)
         val txtProductName = view.findViewById<TextView>(R.id.txtProductName)
         val txtProductPrice = view.findViewById<TextView>(R.id.txtProductPrice)
+        val rootLayout = view.findViewById<LinearLayout>(R.id.rootLayout)
 
         fun bind(data: ProductData){
             Glide.with(mContext).load(data.image_url).into(imgProductImg)
@@ -37,6 +40,10 @@ class ProductRecyclerAdapter(
 
 //            val priceFormat = NumberFormat.getInstance(Locale.KOREA).format(data.price)
 //            txtProductPrice.text = "${priceFormat}원"
+
+            rootLayout.setOnClickListener {
+                Toast.makeText(mContext, "${data.name} 상품이 선택되었습니다!!", Toast.LENGTH_SHORT).show()
+            }
         }
 
     }
