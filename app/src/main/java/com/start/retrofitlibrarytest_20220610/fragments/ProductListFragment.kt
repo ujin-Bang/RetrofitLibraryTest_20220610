@@ -19,9 +19,6 @@ class ProductListFragment: BaseFragment() {
 
     lateinit var binding : FragmentProductListBinding
 
-    val mProductList = ArrayList<ProductData>()
-    lateinit var mProductAdapter: ProductAdapter
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -45,33 +42,8 @@ class ProductListFragment: BaseFragment() {
 
     override fun setValues() {
 
-        getProductListFromServer()
-
-        mProductAdapter = ProductAdapter(mContext, R.layout.fragment_product_list,mProductList)
-        binding.productListView.adapter = mProductAdapter
 
     }
 
-    fun getProductListFromServer(){
-        apiService.getRequestProductInfo().enqueue( object : Callback<BasicResponse>{
-            override fun onResponse(call: Call<BasicResponse>, response: Response<BasicResponse>) {
-
-                if(response.isSuccessful){
-                    val br = response.body()!!
-
-                    mProductList.clear()
-                    mProductList.addAll(br.data.products)
-
-                    mProductAdapter.notifyDataSetChanged()
-                }
-
-            }
-
-            override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
-
-            }
-
-        })
-    }
 
 }
