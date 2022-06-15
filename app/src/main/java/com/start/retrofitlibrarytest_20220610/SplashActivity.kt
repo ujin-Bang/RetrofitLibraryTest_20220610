@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil.setContentView
 import com.start.retrofitlibrarytest_20220610.datas.BasicResponse
 import com.start.retrofitlibrarytest_20220610.datas.UserData
 import com.start.retrofitlibrarytest_20220610.utils.ContextUtil
+import com.start.retrofitlibrarytest_20220610.utils.GlobalData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,7 +28,6 @@ class SplashActivity : BaseActivity() {
 
     override fun setValues() {
 
-        var loginUser: UserData? = null
 
         apiService.getRequestMyInfo(ContextUtil.getToken(mContext)).enqueue(object :
             Callback<BasicResponse> {
@@ -36,7 +36,7 @@ class SplashActivity : BaseActivity() {
                 if (response.isSuccessful) {
 //                    올바른 토큰일때 -> loginUser에 파싱해서 객체 대입.
 
-                    loginUser =  response.body()!!.data.user
+                   GlobalData.loginUser =  response.body()!!.data.user
 
                 }
 
@@ -55,7 +55,7 @@ class SplashActivity : BaseActivity() {
 
           val myIntent: Intent
 
-          if(loginUser != null) {
+          if(GlobalData.loginUser != null) {
               myIntent = Intent(mContext, MainActivity::class.java)
           }
           else{

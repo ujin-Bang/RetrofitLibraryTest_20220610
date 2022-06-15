@@ -11,6 +11,7 @@ import com.start.retrofitlibrarytest_20220610.R
 import com.start.retrofitlibrarytest_20220610.databinding.FragmentMyProfileBinding
 import com.start.retrofitlibrarytest_20220610.datas.BasicResponse
 import com.start.retrofitlibrarytest_20220610.utils.ContextUtil
+import com.start.retrofitlibrarytest_20220610.utils.GlobalData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -39,7 +40,10 @@ class MyProfileFragment: BaseFragment() {
 
     override fun setValues() {
 
-    getMyInfoFromServer()
+//    getMyInfoFromServer()
+
+        binding.txtNickname.text = GlobalData.loginUser!!.nickname
+        Glide.with(mContext).load(GlobalData.loginUser!!.profileImageURL).into(binding.imgProfile)
     }
 
 
