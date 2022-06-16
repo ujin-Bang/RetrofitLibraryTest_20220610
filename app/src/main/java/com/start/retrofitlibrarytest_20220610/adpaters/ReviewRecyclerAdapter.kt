@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.start.retrofitlibrarytest_20220610.R
 import com.start.retrofitlibrarytest_20220610.datas.ReviewData
+import java.text.SimpleDateFormat
 
 class ReviewRecyclerAdapter(
     val mContext: Context,
@@ -20,6 +21,7 @@ class ReviewRecyclerAdapter(
          val txtScore = view.findViewById<TextView>(R.id.txtScore)
          val txtUserNickname = view.findViewById<TextView>(R.id.txtUserNickname)
          val txtProductName = view.findViewById<TextView>(R.id.txtProductName)
+         val txtCreatedAt = view.findViewById<TextView>(R.id.txtCreatedAt)
 
         fun bind( data: ReviewData ){
             txtReviewTitle.text = "리뷰 제목 :${data.title}"
@@ -28,6 +30,9 @@ class ReviewRecyclerAdapter(
             txtScore.text = "리뷰 평가 : ${data.score}"
             txtUserNickname.text = "작성자 닉네임 : ${data.user.nickname}"
             txtProductName.text = "상품 이름 : ${data.product.name}"
+
+            val sdf = SimpleDateFormat("yyyy.M.d a h:mm")
+            txtCreatedAt.text = sdf.format( data.createdAt )
         }
     }
 
