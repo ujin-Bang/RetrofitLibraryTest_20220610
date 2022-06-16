@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.start.retrofitlibrarytest_20220610.R
+import com.start.retrofitlibrarytest_20220610.adpaters.ReviewRecyclerAdapter
 import com.start.retrofitlibrarytest_20220610.databinding.FragmentReviewListBinding
 import com.start.retrofitlibrarytest_20220610.datas.BasicResponse
 import com.start.retrofitlibrarytest_20220610.datas.ReviewData
@@ -18,6 +20,7 @@ class ReviewListFragment : BaseFragment() {
     lateinit var binding: FragmentReviewListBinding
 
     val mReviewList = ArrayList<ReviewData>()
+    lateinit var mReviewAdapter: ReviewRecyclerAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,6 +46,10 @@ class ReviewListFragment : BaseFragment() {
     override fun setValues() {
 
         getReviewListFromServer()
+
+        mReviewAdapter = ReviewRecyclerAdapter(mContext, mReviewList)
+        binding.reviewListRecyclerView.adapter = mReviewAdapter
+        binding.reviewListRecyclerView.layoutManager = LinearLayoutManager(mContext)
     }
 
     fun getReviewListFromServer(){
@@ -55,6 +62,8 @@ class ReviewListFragment : BaseFragment() {
 
                     mReviewList.clear()
                     mReviewList.addAll(br.data.reviews)
+
+                    mReviewAdapter.notifyDataSetChanged()
                 }
             }
 
