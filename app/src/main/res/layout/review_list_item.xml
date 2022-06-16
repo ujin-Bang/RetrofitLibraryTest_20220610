@@ -9,18 +9,22 @@
         android:id="@+id/txtReviewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/red"
         android:text="리뷰 제목 자리"/>
 
     <TextView
         android:id="@+id/txtReviewContent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="리뷰 내용 자리"/>
+        android:text="리뷰 내용 자리"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/txtScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/yellow"
+        android:textStyle="bold"
         android:text="평점 자리(4.5)"/>
 
     <TextView

@@ -22,12 +22,12 @@ class ReviewRecyclerAdapter(
          val txtProductName = view.findViewById<TextView>(R.id.txtProductName)
 
         fun bind( data: ReviewData ){
-            txtReviewTitle.text = data.title
-            txtReviewContent.text = data.content
+            txtReviewTitle.text = "리뷰 제목 :${data.title}"
+            txtReviewContent.text = "리뷰 내용 : ${data.content}"
 
-            txtScore.text = data.score.toString()
-            txtUserNickname.text = data.user.nickname
-            txtProductName.text = data.product.name
+            txtScore.text = "리뷰 평가 : ${data.score}"
+            txtUserNickname.text = "작성자 닉네임 : ${data.user.nickname}"
+            txtProductName.text = "상품 이름 : ${data.product.name}"
         }
     }
 
