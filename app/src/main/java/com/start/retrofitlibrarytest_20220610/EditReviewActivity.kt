@@ -3,6 +3,7 @@ package com.start.retrofitlibrarytest_20220610
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.animation.BounceInterpolator
 import android.widget.TextView
 import androidx.core.widget.addTextChangedListener
@@ -59,11 +60,12 @@ class EditReviewActivity : BaseActivity() {
 //            태그목록으로 추가해보자.
                 mInputTagList.add( tag )
 
-//                태그목록 보여줄 레이아웃에 텍스트뷰를 생성 => xml이 아닌 코틀린에서 텍스트뷰 생성하기
-                val tagTextView = TextView(mContext)
-                tagTextView.text = tag
+//                태그목록 보여줄 레이아웃 xml을 끌어오기 -> 그 내부의 텍스트뷰에 문구 변경
+                val tagBox = LayoutInflater.from(mContext).inflate(R.layout.tag_list_item, null)
+                val txtTag = tagBox.findViewById<TextView>(R.id.txtTag)
+                txtTag.text = "#${tag}"
 
-                binding.tagListLayout.addView(tagTextView)
+                binding.tagListLayout.addView(tagBox)
 
 //                입력값 초기화.
                 binding.edtTeg.setText("")
@@ -76,6 +78,7 @@ class EditReviewActivity : BaseActivity() {
             for(tag in mInputTagList){
                 Log.d("입력태그",tag)
             }
+            return@setOnClickListener
 
             val inputTitle = binding.edtReviewTitle.text.toString()
             val inputContent = binding.edtContent.text.toString()
