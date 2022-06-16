@@ -76,7 +76,6 @@
             android:gravity="top"/>
 
         <TextView
-            android:id="@+id/txtKeyWord"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text = "#키워드 입력하기"/>
@@ -93,8 +92,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
-
 
 
         </LinearLayout>

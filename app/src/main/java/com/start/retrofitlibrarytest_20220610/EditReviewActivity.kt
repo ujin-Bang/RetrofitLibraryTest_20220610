@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.animation.BounceInterpolator
+import android.widget.TextView
 import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import com.start.retrofitlibrarytest_20220610.databinding.ActivityEditReviewBinding
@@ -52,11 +53,17 @@ class EditReviewActivity : BaseActivity() {
                 Log.d("입력값", "스페이스가 들어옴")
 
 //            입력된 값을 태그로 등록
-//                태그로 등록될 문구 => " "공백 제거
+//            태그로 등록될 문구 => " "공백 제거
                 val tag = nowText.replace(" ","")
 
 //            태그목록으로 추가해보자.
                 mInputTagList.add( tag )
+
+//                태그목록 보여줄 레이아웃에 텍스트뷰를 생성 => xml이 아닌 코틀린에서 텍스트뷰 생성하기
+                val tagTextView = TextView(mContext)
+                tagTextView.text = tag
+
+                binding.tagListLayout.addView(tagTextView)
 
 //                입력값 초기화.
                 binding.edtTeg.setText("")
