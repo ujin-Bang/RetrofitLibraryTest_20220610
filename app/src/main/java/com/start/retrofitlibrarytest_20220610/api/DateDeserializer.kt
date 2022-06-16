@@ -22,6 +22,15 @@ class DateDeserializer: JsonDeserializer<Date> {
     //        서버가 준 String -> Date형식으로 변환(parse)
         val date = sdf.parse(dateStr)!!
 
+//        만들어진 date변수에는 -> 서버가 알려준 시간(GMT+0)이 분석되어 들어감.
+//        한국폰은 GMT+9로 세팅되어 있음. 한국시간대로 맞춰주기.
+        val now = Calendar.getInstance()
+
+
+        date.time += now.timeZone.rawOffset //시차를 ms단위로 계산한 값
+
+
+
 //        파싱 결과로 완성된 date 선정
         return date
 
