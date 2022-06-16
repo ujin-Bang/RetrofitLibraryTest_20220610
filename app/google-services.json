@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "453707505389",
+    "project_id": "retrofitlibrarytest-2022-5cbbc",
+    "storage_bucket": "retrofitlibrarytest-2022-5cbbc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453707505389:android:3ede9881b8c04aa00036e4",
+        "android_client_info": {
+          "package_name": "com.start.retrofitlibrarytest_20220610"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "453707505389-kc3tfm15ndunsqbi5nadqr1pqtdthvf2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXoFayFP6KVRaek8CmIeYLBVjsYl1B4Zg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "453707505389-kc3tfm15ndunsqbi5nadqr1pqtdthvf2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
