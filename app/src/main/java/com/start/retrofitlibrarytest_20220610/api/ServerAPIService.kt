@@ -79,4 +79,8 @@ interface ServerAPIService {
         @Field("tag_list") tag: String,
     ): Call<BasicResponse>
 
+
+//    전체 리뷰 목록(임시)
+    @GET("/review")
+    fun getRequestReview(): Call<BasicResponse>
 }
