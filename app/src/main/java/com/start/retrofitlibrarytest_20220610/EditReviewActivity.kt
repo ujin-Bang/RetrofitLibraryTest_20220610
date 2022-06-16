@@ -1,5 +1,6 @@
 package com.start.retrofitlibrarytest_20220610
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.animation.BounceInterpolator
@@ -48,6 +49,10 @@ class EditReviewActivity : BaseActivity() {
                     if(response.isSuccessful){
                         val br = response.body()!!
                         Log.d("리뷰작성응답",br.toString())
+
+                        val myIntent = Intent(mContext, MainActivity::class.java)
+                        startActivity(myIntent)
+
                     }
                 }
 

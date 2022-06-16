@@ -5,13 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.start.retrofitlibrarytest_20220610.R
-import com.start.retrofitlibrarytest_20220610.adpaters.CategoryRecyclerAdapter
+import com.start.retrofitlibrarytest_20220610.adpaters.ReviewRecyclerAdapter
 import com.start.retrofitlibrarytest_20220610.databinding.FragmentReviewListBinding
 import com.start.retrofitlibrarytest_20220610.datas.BasicResponse
-import com.start.retrofitlibrarytest_20220610.datas.SmallCategoryData
+import com.start.retrofitlibrarytest_20220610.datas.ReviewData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -20,6 +19,8 @@ class ReviewListFragment : BaseFragment() {
 
     lateinit var binding: FragmentReviewListBinding
 
+    val mReviewList = ArrayList<ReviewData>()
+    lateinit var mReviewAdapter: ReviewRecyclerAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,6 +29,12 @@ class ReviewListFragment : BaseFragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_review_list, container,false)
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        getReviewListFromServer()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -42,6 +49,33 @@ class ReviewListFragment : BaseFragment() {
     }
 
     override fun setValues() {
+
+
+        mReviewAdapter = ReviewRecyclerAdapter(mContext, mReviewList)
+        binding.reviewRecyclerView.adapter = mReviewAdapter
+        binding.reviewRecyclerView.layoutManager = LinearLayoutManager(mContext)
+    }
+
+    fun getReviewListFromServer(){
+        apiService.getRequestReviewList().enqueue(object : Callback<BasicResponse>{
+            override fun onResponse(call: Call<BasicResponse>, response: Response<BasicResponse>) {
+
+                if(response.isSuccessful){
+                    val br = response.body()!!
+
+                    mReviewList.clear()
+                    mReviewList.addAll(br.data.reviews)
+
+                    mReviewAdapter.notifyDataSetChanged()
+                }
+            }
+
+            override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
+
+            }
+
+        })
+
     }
 
 }

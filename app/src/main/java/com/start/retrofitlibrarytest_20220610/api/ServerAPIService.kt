@@ -78,5 +78,5 @@ interface ServerAPIService {
         @Field("score") rating: Float,
         @Field("tag_list") tag: String,
     ): Call<BasicResponse>
-}
 
+}

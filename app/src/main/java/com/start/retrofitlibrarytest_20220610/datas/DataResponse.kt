@@ -10,5 +10,6 @@ class DataResponse(
 //  모든카테고리 조회시 사용
     var categories: List<SmallCategoryData>,
 
+
 ) {
 }
