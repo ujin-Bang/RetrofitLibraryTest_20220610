@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import androidx.databinding.DataBindingUtil.setContentView
+import com.google.firebase.messaging.FirebaseMessaging
 import com.start.retrofitlibrarytest_20220610.datas.BasicResponse
 import com.start.retrofitlibrarytest_20220610.datas.UserData
 import com.start.retrofitlibrarytest_20220610.utils.ContextUtil
@@ -23,6 +25,17 @@ class SplashActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+
+//        푸시용 기기토큰 발급 요청
+        FirebaseMessaging.getInstance().token.addOnCompleteListener {
+
+//            토큰을 잘 받아왔다면
+            if(it.isSuccessful){
+
+                val deviceToken = it.result
+                Log.d("FCM토큰 ", deviceToken)
+            }
+        }
 
     }
 
