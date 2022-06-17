@@ -20,10 +20,12 @@ import com.start.retrofitlibrarytest_20220610.databinding.FragmentMyProfileBindi
 import com.start.retrofitlibrarytest_20220610.datas.BasicResponse
 import com.start.retrofitlibrarytest_20220610.utils.ContextUtil
 import com.start.retrofitlibrarytest_20220610.utils.GlobalData
+import com.start.retrofitlibrarytest_20220610.utils.URIPathHelper
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.File
 
 class MyProfileFragment : BaseFragment() {
 
@@ -52,11 +54,13 @@ class MyProfileFragment : BaseFragment() {
             if(resultCode == Activity.RESULT_OK){
 
 //                선택한 이미지 받아오기
-                val selectedImageUri = data?.data
+                val selectedImageUri = data?.data!!
 
                 Log.d("선택된이미지URI",selectedImageUri.toString())
 
-//                URI ->실제 첨부 가능한 파일로 변환해야함.
+//                Uri ->실제 첨부 가능한 파일로 변환해야함.
+//                Uri -> File 형태로 변환 -> 그 실재 경로를 추출해서 , Retrofit에 첨부할 수 있게됨.
+                val file = File(URIPathHelper().getPath(mContext, selectedImageUri))
             }
         }
     }
