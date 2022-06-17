@@ -24,6 +24,9 @@ import com.start.retrofitlibrarytest_20220610.datas.BasicResponse
 import com.start.retrofitlibrarytest_20220610.utils.ContextUtil
 import com.start.retrofitlibrarytest_20220610.utils.GlobalData
 import com.start.retrofitlibrarytest_20220610.utils.URIPathHelper
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -64,6 +67,32 @@ class MyProfileFragment : BaseFragment() {
 //                Uri ->실제 첨부 가능한 파일로 변환해야함.
 //                Uri -> File 형태로 변환 -> 그 실재 경로를 추출해서 , Retrofit에 첨부할 수 있게됨.
                 val file = File(URIPathHelper().getPath(mContext, selectedImageUri))
+
+//                 파일을 -> Retrofit에 첨부 가능한 RequestBody 형태로 가공.
+                val fileReqBody = RequestBody.create(MediaType.get("image/*"), file)
+
+//                실제 첨부 데이터로 변경
+                val body = MultipartBody.Part.createFormData("profile_image", "myFile.jpg", fileReqBody)
+
+                apiService.putRequestProfileImg(body).enqueue( object : Callback<BasicResponse>{
+                    override fun onResponse(
+                        call: Call<BasicResponse>,
+                        response: Response<BasicResponse>
+                    ) {
+                        if(response.isSuccessful){
+                            Toast.makeText(mContext, "프로필 사진이 변경되었습니다.", Toast.LENGTH_SHORT).show()
+                        }
+                        else{
+                            Toast.makeText(mContext, "프로필 사진 변경에 실패했습니다.", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<BasicResponse>, t: Throwable) {
+
+                    }
+
+                })
 
             }
         }
