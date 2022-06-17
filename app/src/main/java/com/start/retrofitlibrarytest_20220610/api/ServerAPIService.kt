@@ -1,6 +1,7 @@
 package com.start.retrofitlibrarytest_20220610.api
 
 import com.start.retrofitlibrarytest_20220610.datas.BasicResponse
+import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -83,4 +84,12 @@ interface ServerAPIService {
 //    전체 리뷰 목록(임시)
     @GET("/review")
     fun getRequestReview(): Call<BasicResponse>
+
+
+//    프로필 사진첨부 -> Field대신 Multipart 사용
+    @Multipart
+    @PUT("/user/image")
+    fun putRequestProfileImg(
+        @Part img:MultipartBody.Part
+    ): Call<BasicResponse>
 }
