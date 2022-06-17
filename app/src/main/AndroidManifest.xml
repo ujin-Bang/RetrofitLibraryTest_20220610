@@ -4,6 +4,7 @@
     package="com.start.retrofitlibrarytest_20220610">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".GlobalApplication"

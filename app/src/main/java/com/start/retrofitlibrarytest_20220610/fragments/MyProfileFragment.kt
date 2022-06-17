@@ -1,5 +1,6 @@
 package com.start.retrofitlibrarytest_20220610.fragments
 
+import android.Manifest
 import android.app.Activity
 import android.app.Activity.RESULT_OK
 import android.content.DialogInterface
@@ -15,6 +16,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.gun0912.tedpermission.PermissionListener
+import com.gun0912.tedpermission.normal.TedPermission
 import com.start.retrofitlibrarytest_20220610.R
 import com.start.retrofitlibrarytest_20220610.databinding.FragmentMyProfileBinding
 import com.start.retrofitlibrarytest_20220610.datas.BasicResponse
@@ -61,6 +64,7 @@ class MyProfileFragment : BaseFragment() {
 //                Uri ->실제 첨부 가능한 파일로 변환해야함.
 //                Uri -> File 형태로 변환 -> 그 실재 경로를 추출해서 , Retrofit에 첨부할 수 있게됨.
                 val file = File(URIPathHelper().getPath(mContext, selectedImageUri))
+
             }
         }
     }
@@ -69,11 +73,27 @@ class MyProfileFragment : BaseFragment() {
 
         binding.imgProfile.setOnClickListener {
 
+//            실제 파일 경로 읽는 권한 필요.(업로드가 가능해짐)
+            val pl = object : PermissionListener{
+                override fun onPermissionGranted() {
+
 //            갤러리(안드로이드 제공)로 사진 가지러 이동(왕복 이동).
-            val myIntent = Intent()
-            myIntent.action = Intent.ACTION_PICK
-            myIntent.type = android.provider.MediaStore.Images.Media.CONTENT_TYPE
-            startActivityForResult(myIntent, REQ_FOR_GALLERY)
+                    val myIntent = Intent()
+                    myIntent.action = Intent.ACTION_PICK
+                    myIntent.type = android.provider.MediaStore.Images.Media.CONTENT_TYPE
+                    startActivityForResult(myIntent, REQ_FOR_GALLERY)
+                }
+
+                override fun onPermissionDenied(deniedPermissions: MutableList<String>?) {
+                    Toast.makeText(mContext, "갤러리 조회 권한이 없습니다.", Toast.LENGTH_SHORT).show()
+                }
+
+            }
+
+            TedPermission.create()
+                .setPermissionListener(pl)
+                .setPermissions(Manifest.permission.READ_EXTERNAL_STORAGE)
+                .check()
 
         }
 
