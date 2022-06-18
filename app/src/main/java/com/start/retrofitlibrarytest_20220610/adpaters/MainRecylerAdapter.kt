@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.start.retrofitlibrarytest_20220610.R
 import com.start.retrofitlibrarytest_20220610.datas.ReviewData
@@ -15,6 +16,15 @@ class MainRecylerAdapter(val mContext:Context, val mList: List<ReviewData>): Rec
 //    2가지 ViewHolder가 필요함. => 0번칸: 상단(Header)부 xml / 나머지(Item)칸 : 리뷰 모양 xml
 
     inner class HeaderViewHolder(row: View): RecyclerView.ViewHolder(row){
+
+        val imgCategory1 = row.findViewById<ImageView>(R.id.imgCategory1)
+
+        fun bind(){
+
+            imgCategory1.setOnClickListener {
+                Toast.makeText(mContext, "1번 카테고리 눌림", Toast.LENGTH_SHORT).show()
+            }
+        }
 
     }
 
@@ -28,9 +38,6 @@ class MainRecylerAdapter(val mContext:Context, val mList: List<ReviewData>): Rec
 
             txtReviewProductName.text = data.product.name
             txtReviewerName.text = data.user.nickname
-
-
-
 
         }
 
@@ -74,6 +81,8 @@ class MainRecylerAdapter(val mContext:Context, val mList: List<ReviewData>): Rec
 
         when( holder ){
             is HeaderViewHolder -> {
+
+                holder.bind()
 
             }
             is ItemViewHolder -> {
